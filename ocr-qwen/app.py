@@ -93,12 +93,12 @@ def curl_request(oss_url, extra_info):
         "# Limitation\n"
         "- The scope of analysis is strictly limited to the content of the provided picture, and does not involve any speculation or other information outside the picture.\n"
         "- The summary must be strictly based on the content of the picture, and personal speculation or creative content cannot be added.\n"
-        "- Only JSON can be used to return results, the key must be in English, and the JSON data format must be correct.\n"
+        "- Only JSON can be used to return results and the JSON data format must be correct.\n"
         "# Input data\n"
         "## Image extraction content supplementary information (You need to extract the image content based on the supplementary information. If the input is empty, the supplementary information will be ignored)\n"
         f"{extra_info}\n\n"
         "# Output format\n"
-        "Directly output the content in JSON format use english.\n"
+        "Directly output the content in JSON format.\n"
     )
     api_url = 'https://dashscope-intl.aliyuncs.com/compatible-mode/v1/chat/completions'
     # 设置请求头
