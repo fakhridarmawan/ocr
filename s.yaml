@@ -1,0 +1,56 @@
+edition: 3.0.0
+name: fc3-example
+access: default
+resources:
+  fcDemo:
+    component: fc3
+    props:
+      region: ap-southeast-5
+      handler: handler
+      role: acs:ram::XXXX:role/aliyunfcdefaultrole # put your main account uid in XXXX
+      disableOndemand: false
+      description: OCR
+      timeout: 120
+      diskSize: 512
+      internetAccess: true
+      customRuntimeConfig:
+        port: 9000
+        command:
+          - python3
+          - app.py
+      # logConfig: # define log project in sls to enable log for your FC
+      #   enableRequestMetrics: true
+      #   enableInstanceMetrics: true
+      #   logBeginRule: DefaultRegex
+      #   project: serverless-ap-southeast-5-xxx
+      #   logstore: default-logs
+      functionName: ocr-qwen
+      runtime: custom.debian10
+      cpu: 1
+      instanceConcurrency: 100
+      memorySize: 1024
+      environmentVariables:
+        PATH: >-
+          /var/fc/lang/python3.10/bin:/usr/local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/local/ruby/bin:/opt/bin:/code:/code/bin
+        PYTHONPATH: /opt/python:/code/python:/code
+        OSS_BUCKET: yourossbucket # your oss bucket name
+        TZ: Asia/Jakarta
+        USER_PASSWORD: '' # use this if you enable login page
+        DASHSCOPE_API_KEY: sk-xxx #put your API Key here or in FC Configuration -> Environment variable
+        USER_NAME: '' # use this if you enable login page
+        OSS_ENDPOINT: https://oss-ap-southeast-1.aliyuncs.com # OSS singapore endpoint
+        ENABLE_LOGIN: 'false'
+      code: ./
+      triggers:
+        - triggerConfig:
+            methods:
+              - GET
+              - POST
+              - PUT
+              - DELETE
+            authType: anonymous
+            disableURLInternet: false
+          triggerName: httpTrigger
+          description: ''
+          qualifier: LATEST
+          triggerType: http
