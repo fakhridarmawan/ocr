@@ -33,7 +33,7 @@ resources:
         PATH: >-
           /var/fc/lang/python3.10/bin:/usr/local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/local/ruby/bin:/opt/bin:/code:/code/bin
         PYTHONPATH: /opt/python:/code/python:/code
-        OSS_BUCKET: yourossbucket # your oss bucket name
+        OSS_BUCKET: yourossbucket # put your oss bucket name in singapore
         TZ: Asia/Jakarta
         USER_PASSWORD: '' # use this if you enable login page
         DASHSCOPE_API_KEY: sk-xxx #put your API Key here or in FC Configuration -> Environment variable
